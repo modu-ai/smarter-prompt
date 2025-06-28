@@ -12,6 +12,39 @@
 
 > **일반 사용자들이 겪는 프롬프트 작성의 어려움 → "도대체 어떻게 이야기를 해줘야 내 의도를 정확하게 이해를 할 거니?"**
 
+## 📊 SMART+ER 구조 한눈에 보기
+
+### SMART+ER 전체 구조도
+
+```mermaid
+graph TB
+    subgraph "SMART+ER 프롬프트 구조"
+        S["🎯 S - Situation<br/>상황 설명"]
+        M["🎖️ M - Mission<br/>목표 명시"]
+        A["📋 A - Action Steps<br/>단계별 수행"]
+        R["📝 R - Result<br/>결과물 형식"]
+        T["🎨 T - Tone & Style<br/>톤과 스타일"]
+        E["💡 E - Example<br/>예시 (선택)"]
+        R2["📚 R - Resource<br/>자료 (선택)"]
+    end
+    
+    S --> M
+    M --> A
+    A --> R
+    R --> T
+    T -.-> E
+    T -.-> R2
+    
+    style S fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#fff
+    style M fill:#4ECDC4,stroke:#333,stroke-width:2px,color:#fff
+    style A fill:#45B7D1,stroke:#333,stroke-width:2px,color:#fff
+    style R fill:#96CEB4,stroke:#333,stroke-width:2px,color:#fff
+    style T fill:#FECA57,stroke:#333,stroke-width:2px,color:#fff
+    style E fill:#DDA0DD,stroke:#333,stroke-width:2px,color:#fff
+    style R2 fill:#DDA0DD,stroke:#333,stroke-width:2px,color:#fff
+```
+
+
 모두의 AI에서 지난 1년간 진행한 **"챗GPT와 한달살기", "프롬프트의 정석", "나만의 AI직원 만들기"** 온라인/오프라인 강의를 **수강한 분들의 피드백을 분석**한 결과, 다음과 같은 주요 문제점들이 발견되었습니다:
 
 1. **모호한 지시사항**: "좋은 아이디어 좀 줘봐"와 같은 불명확한 요청으로 인해 AI가 제대로 된 답변을 하지 못하는 경우가 많았습니다.
@@ -39,7 +72,7 @@ SMART+ER 프롬프트의 주요 특징과 목적은 다음과 같습니다:
 4. **반복 수정 최소화**: 명확한 지시와 구체적인 요구사항 제시로 **One Shot Prompting(한번에 끝내는 지시사항)** 목표로 합니다
 5. **맥락 이해 향상**: AI가 사용자의 의도와 상황을 정확히 파악할 수 있도록 돕습니다.
 
-## SMART+ER 약어 풀이
+## SMART+ER 요소 설명
 
 SMARTER는 템플릿의 핵심 구성 요소를 나타내는 약어입니다:
 
@@ -345,9 +378,32 @@ Example과 Resource는 AI에게 참고할 만한 예시나 추가 자료를 제�
 
 ---
 
-# 5. SMARTER 템플릿 예제
+# 5. SMART+ER 템플릿 예제
 ## 예제 사용방법
 [내용] '내용'은 여러분둘의 상황에 맞게 수정해서 사용하시면 됩니다. 
+
+## 📚 사용자별 맞춤 예제
+
+### 👨‍🎓 학생용 예제
+- [📚 리포트 과제 작성 도움](examples/student/01_assignment_help.md)
+- [📖 기말고사 공부 계획 수립](examples/student/02_exam_study_plan.md)
+- [🎤 팀 프로젝트 발표 준비](examples/student/03_presentation_prep.md)
+- [✍️ 영어 에세이 작성](examples/student/04_essay_writing.md)
+- [🎯 진로 탐색 및 인턴십 준비](examples/student/05_career_planning.md)
+
+### 💼 직장인용 예제
+- [💼 신규 프로젝트 제안서 작성](examples/worker/01_project_proposal.md)
+- [📊 분기별 성과 보고서 작성](examples/worker/02_business_report.md)
+- [🎯 경영진 대상 전략 프레젠테이션](examples/worker/03_executive_presentation.md)
+- [✉️ 중요 비즈니스 이메일 작성](examples/worker/04_business_email.md)
+- [🔧 업무 프로세스 개선안 수립](examples/worker/05_process_improvement.md)
+
+### 🏠 일반인용 예제
+- [✈️ 가족 해외여행 계획 수립](examples/general/01_travel_planning.md)
+- [🏃 다이어트 및 건강 관리 계획](examples/general/02_health_management.md)
+- [🏠 전세 계약 검토 및 협상](examples/general/03_real_estate_contract.md)
+- [👶 초등학생 자녀 학습 습관 개선](examples/general/04_parenting_education.md)
+- [💰 사회초년생 재테크 시작하기](examples/general/05_financial_planning.md)
 
 ---
 
@@ -363,10 +419,10 @@ Example과 Resource는 AI에게 참고할 만한 예시나 추가 자료를 제�
 ## A: 실행 계획
 중요: 각 단계가 완료 될 때마다 사용자에게 내용을 확인 받은 후 다음 단계 진행
 1.  회의 내용 분석 및 초안 작성: 사용자가 제공한 회의 내용(텍스트, 녹취록 요약 등)을 분석하고, 아래 제공된 "회의록 양식"에 맞춰 회의록 초안을 작성합니다.
-2.  정보 확인 및 보충: 회의록 양식에 필수적인 정보(예: 회의 제목, 일시, 장소, 참석자 명단, 결정 사항, 실행 항목 등)가 누락된 경우, 사용자에게 명확하게 질문하여 필요한 정보를 보충합니다.
+2.  정보 확인 및 보충: 회의록 양식에 필수적인 정보
 3.  회의록 초안 검토 요청: 정보 보충 후 완성된 회의록 초안을 사용자에게 제시하고, 내용 검토 및 수정 사항 확인을 요청합니다.
 4.  최종 회의록 생성: 사용자의 피드백을 반영하여 최종 회의록 텍스트를 생성합니다.
-5.  이메일 본문 작성: 최종 확정된 회의록을 바탕으로, 아래 제공된 "이메일 양식"에 맞춰 회의 내용을 간략히 요약하고 회의록 참조를 안내하는 이메일 본문 초안을 작성합니다. (*주의: AI는 실제 파일 첨부를 할 수 없으므로, 사용자가 메일 발송 시 회의록 파일을 직접 첨부해야 함을 인지시켜 주세요.*)
+5.  이메일 본문 작성: 최종 확정된 회의록을 바탕으로, 아래 제공된 "이메일 양식"에 맞춰 회의 내용을 간략히 요약하고 회의록 참조를 안내하는 이메일 본문 초안을 작성합니다.
 6.  이메일 본문 검토 요청: 작성된 이메일 본문을 사용자에게 제시하고, 최종 확인을 받습니다.
 
 ## R: 결과물
@@ -442,6 +498,8 @@ Example과 Resource는 AI에게 참고할 만한 예시나 추가 자료를 제�
 감사합니다.
 [작성자 이름 또는 팀 이름] 드림
 ```
+---
+
 ```markdown
 # 모두의AI 미팅록
 
@@ -456,7 +514,7 @@ Example과 Resource는 AI에게 참고할 만한 예시나 추가 자료를 제�
 
 ---
 
-## :speaking_head: 가상 회의 대화 (약 12분 분량)
+## 회의 내용
 
 김진우:  
 좋아요, 그럼 회의 시작하겠습니다. 오늘은 다음 분기 주요 일정과 신규 회원사 onboarding 방식 개선에 대해 논의할게요. 먼저 다음 분기 일정 간단히 정리해 주시겠어요, 서연 팀장님?
@@ -521,7 +579,9 @@ Example과 Resource는 AI에게 참고할 만한 예시나 추가 자료를 제�
 박성호:  
 다들 고생 많으셨습니다. 자료 정리되면 금요일 오전까지 전달드릴게요!
 ```
+
 ---
+
 ## 사무국 기획 및 사업총괄 - 프로젝트 관리
 
 사무국 기획 및 사업총괄을 위한 프로젝트 관리 프롬프트

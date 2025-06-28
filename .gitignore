@@ -1,0 +1,17 @@
+# IDE 및 에디터 설정
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# Claude Code 설정
+CLAUDE.md
+
+# 임시 파일
+*.tmp
+*.temp
